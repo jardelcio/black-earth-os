@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Earth — Commercial Intelligence OS | AgroRemoto</title>
+  <meta name="description" content="Sistema multiagente automatizado de inteligência comercial, prospecção B2B, análise de mercado, concorrência, simulador de margem e radar regulatório da Black Earth na América do Sul." />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="app-sidebar">
+      <div>
+        <div class="brand-header">
+          <div class="brand-kicker">AgroRemoto • South America</div>
+          <div class="brand-title">BLACK EARTH OS</div>
+          <div class="brand-subtitle">Commercial Intelligence &amp; Automation</div>
+        </div>
+
+        <nav aria-label="Navegação Principal">
+          <ul class="nav-list">
+            <li>
+              <button class="nav-btn active" id="nav-tab-automation" data-tab="panel-automation">
+                <span>1. Central de Automação (Cron)</span>
+                <span class="nav-badge" id="badge-schedules">4 ATIVOS</span>
+              </button>
+            </li>
+            <li>
+              <button class="nav-btn" id="nav-tab-prospecting" data-tab="panel-prospecting">
+                <span>2. Prospecção &amp; CRM Reverso</span>
+                <span class="nav-badge" id="badge-accounts">11</span>
+              </button>
+            </li>
+            <li>
+              <button class="nav-btn" id="nav-tab-breakeven" data-tab="panel-breakeven">
+                <span>3. Break-Even &amp; Custo Problema</span>
+                <span class="nav-badge">11 SKUs</span>
+              </button>
+            </li>
+            <li>
+              <button class="nav-btn" id="nav-tab-landed" data-tab="panel-landed">
+                <span>4. Landed Cost &amp; 11% Cinza</span>
+                <span class="nav-badge">B2B / OEM</span>
+              </button>
+            </li>
+            <li>
+              <button class="nav-btn" id="nav-tab-competitors" data-tab="panel-competitors">
+                <span>5. Concorrência &amp; Notícias</span>
+                <span class="nav-badge" id="badge-alerts">Radar</span>
+              </button>
+            </li>
+            <li>
+              <button class="nav-btn" id="nav-tab-marketing" data-tab="panel-marketing">
+                <span>6. Marketing &amp; Playbooks B2B</span>
+                <span class="nav-badge">Gates R0-R4</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="cron-status-box">
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span>DAEMON CRON 100% ATIVO</span>
+          </div>
+          <div style="margin-top: 6px; font-size: 11.5px; color: var(--text-secondary);">
+            Execuções diárias (07:00, 07:30, 08:00) e semanais (Seg 09:00) habilitadas.
+          </div>
+        </div>
+        <div>Responsável: <strong>Jardélcio Carvalho</strong> (AgroRemoto)</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="page-heading">
+          <h1>Black Earth — Commercial Intelligence OS</h1>
+          <p>Operação Comercial Reversa • Humalite Sheerness/Alberta (11% Cinza | ISO 19822) • Foco Brasil (70–80%) &amp; América do Sul</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-primary" id="btn-run-all-agents">Executar Ciclo Completo Agora</button>
+          <a class="btn" id="btn-download-md" href="/api/reports/download?file=relatorio_executivo_automacao_black_earth.md" target="_blank">Baixar Relatório (.MD)</a>
+          <a class="btn" id="btn-download-csv-accounts" href="/api/reports/download?file=pipeline_contas_priorizadas.csv" target="_blank">Exportar CRM (.CSV)</a>
+          <a class="btn" id="btn-download-csv-be" href="/api/reports/download?file=tabela_breakeven_soja_cafe.csv" target="_blank">Exportar Break-Even (.CSV)</a>
+        </div>
+      </header>
+
+      <section class="kpi-grid" aria-label="Indicadores Executivos">
+        <div class="kpi-card">
+          <div class="kpi-label">Motores Onda 1 (Demanda &amp; Escala)</div>
+          <div class="kpi-value">Fuze DS • Alpha • Magna</div>
+          <div class="kpi-meta">+ XP100/MP30 (B2B) e Keal (Café ROI 11x+)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Barreira de Origem (Humalite vs Leonardita)</div>
+          <div class="kpi-value">11% Cinza vs 60%</div>
+          <div class="kpi-meta">3 a 5x menos inerte • Cd 0,1 / Pb 3 / As 1 ppm (IN 61/2020)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Janela Crítica Eventos &amp; Ensaios 2027</div>
+          <div class="kpi-value" style="color: var(--accent-amber);">45–60 Dias</div>
+          <div class="kpi-meta">Show Safra, Tecnoshow Comigo, Show Rural e Andav</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Contas Estratégicas Qualificadas</div>
+          <div class="kpi-value" id="kpi-total-accounts">11 Clusters</div>
+          <div class="kpi-meta">OEM (Vittia/Brandt), Coops (Cooxupé/Comigo/Coamo) e Fundações</div>
+        </div>
+      </section>
+
+      <!-- TAB 1: CENTRAL DE AUTOMAÇÃO -->
+      <section class="tab-panel active" id="panel-automation">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Rotinas Agendadas 100% Automatizadas (6 Agentes Especialistas + Orquestrador)</h2>
+              <p class="section-desc">Os fluxos abaixo rodam automaticamente via agendador daemon e crontab, gerando alertas, recalculando scores/margens e atualizando os relatórios.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Código do Fluxo</th>
+                  <th>Agente Responsável</th>
+                  <th>Frequência / Cron</th>
+                  <th>Escopo Automatizado</th>
+                  <th>Última Execução</th>
+                  <th>Status</th>
+                  <th>Ação</th>
+                </tr>
+              </thead>
+              <tbody id="schedules-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="section-card">
+            <div class="section-header">
+              <div>
+                <h2 class="section-title">Alertas Prioritários do Radar (Notícias, MAPA &amp; Feiras 2027)</h2>
+                <p class="section-desc">Sinais críticos detectados pelos agentes para decisão imediata do consultor.</p>
+              </div>
+            </div>
+            <div id="radar-alerts-container"></div>
+          </div>
+
+          <div class="section-card">
+            <div class="section-header">
+              <div>
+                <h2 class="section-title">Últimas Execuções (Contrato JSON Seção 10)</h2>
+                <p class="section-desc">Trilha auditável com fatos verificados, premissas, recomendações e trava de aprovação humana.</p>
+              </div>
+            </div>
+            <div id="automation-runs-container"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: PROSPECÇÃO & CRM REVERSO -->
+      <section class="tab-panel" id="panel-prospecting">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Pipeline Reverso de Contas Qualificadas (Agente 02 — Prospecção)</h2>
+              <p class="section-desc">Regra operacional: abordar sempre pela porta de entrada técnica (Coordenador Técnico, P&amp;D ou Gerente de Insumos), nunca pela diretoria primeiro.</p>
+            </div>
+          </div>
+
+          <div class="controls-row">
+            <div class="control-group">
+              <label for="filter-channel">Filtrar por Canal</label>
+              <select id="filter-channel">
+                <option value="ALL">Todos os Canais</option>
+                <option value="OEM / Formulador Industrial">OEM / Formulador Industrial</option>
+                <option value="Cooperativa">Cooperativa</option>
+                <option value="Parceiro Técnico / Pesquisa">Parceiro Técnico / Pesquisa</option>
+                <option value="Conta Âncora / Usinas Cana">Conta Âncora / Usinas Cana</option>
+                <option value="Conta Âncora">Conta Âncora (Grãos/Algodão)</option>
+                <option value="Distribuidor Técnico">Distribuidor Técnico</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label for="filter-uf">Filtrar por Estado (Foco MT, GO, MG, PR, SP)</label>
+              <select id="filter-uf">
+                <option value="ALL">Todos os Estados</option>
+                <option value="SP">SP (OEM &amp; Cana)</option>
+                <option value="MG">MG (Café)</option>
+                <option value="GO">GO (Comigo / Grãos)</option>
+                <option value="MT">MT (Grãos / Algodão / Fundações)</option>
+                <option value="PR">PR (Cooperativas)</option>
+                <option value="RJ">RJ (UENF / Embrapa Solos)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Score (0–100)</th>
+                  <th>Organização / Cluster</th>
+                  <th>Canal &amp; UF</th>
+                  <th>Porta de Entrada Obrigatória</th>
+                  <th>Lideranças Mapeadas</th>
+                  <th>SKUs Recomendados</th>
+                  <th>Estágio Pipeline</th>
+                  <th>Próxima Ação Verificável</th>
+                </tr>
+              </thead>
+              <tbody id="accounts-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Cadastrar Nova Conta / Lead no Motor de Qualificação</h2>
+              <p class="section-desc">Calcula automaticamente o Lead Score com os 6 pesos da especificação (Fit 25, Volume 20, Acesso 15, Regulatório 15, Técnico 15, Operacional 10).</p>
+            </div>
+          </div>
+          <div class="controls-row">
+            <div class="control-group">
+              <label for="new-acc-name">Razão Social / Nome da Conta</label>
+              <input type="text" id="new-acc-name" placeholder="Ex.: Cooperativa Agrária" />
+            </div>
+            <div class="control-group">
+              <label for="new-acc-channel">Canal</label>
+              <select id="new-acc-channel">
+                <option value="Cooperativa">Cooperativa</option>
+                <option value="OEM / Formulador Industrial">OEM / Formulador Industrial</option>
+                <option value="Distribuidor Técnico">Distribuidor Técnico</option>
+                <option value="Conta Âncora">Conta Âncora</option>
+                <option value="Parceiro Técnico / Pesquisa">Parceiro Técnico / Pesquisa</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label for="new-acc-uf">UF</label>
+              <input type="text" id="new-acc-uf" value="PR" />
+            </div>
+            <div class="control-group">
+              <label for="new-acc-leader">Contato / Coordenador Técnico</label>
+              <input type="text" id="new-acc-leader" placeholder="Nome / Cargo técnico" />
+            </div>
+            <div class="control-group">
+              <label for="new-acc-skus">SKUs Recomendados</label>
+              <input type="text" id="new-acc-skus" value="Fuze DS, Alpha, Magna" />
+            </div>
+            <div class="control-group" style="display:flex; align-items:flex-end;">
+              <button class="btn btn-primary" id="btn-add-account" style="width:100%; justify-content:center;">Qualificar &amp; Salvar no CRM</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: BREAK-EVEN, SUBSTITUIÇÃO MAP & CUSTO DO PROBLEMA -->
+      <section class="tab-panel" id="panel-breakeven">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Simulador Dinâmico de Break-Even &amp; Semáforo Comercial por Cultura (Diagnóstico Blocos 1 a 4)</h2>
+              <p class="section-desc">Altere a cultura, a cotação do dia ou o fator de haircut (Canadá → Brasil) para recalcular instantaneamente o piso de resposta e o ROI de cada SKU.</p>
+            </div>
+          </div>
+
+          <div class="controls-row">
+            <div class="control-group">
+              <label for="be-crop-select">Cultura Selecionada</label>
+              <select id="be-crop-select">
+                <option value="P_SOJA">Soja em grão (R$ 2,083/kg)</option>
+                <option value="P_CAFE">Café Arábica beneficiado (R$ 23,33/kg)</option>
+                <option value="P_ALG">Algodão pluma (R$ 9,67/kg)</option>
+                <option value="P_MILHO">Milho em grão (R$ 1,133/kg)</option>
+                <option value="P_BATATA">Batata / HF (R$ 2,20/kg)</option>
+                <option value="P_TRIGO">Trigo (R$ 1,25/kg)</option>
+                <option value="P_CANA">Cana-de-açúcar ATR (R$ 0,145/kg ATR)</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label for="be-crop-price">Preço da Cultura (R$/kg)</label>
+              <input type="number" step="0.01" id="be-crop-price" value="2.083" />
+            </div>
+            <div class="control-group">
+              <label for="be-haircut">Fator Haircut (Canadá → Brasil)</label>
+              <input type="number" step="0.05" id="be-haircut" value="0.60" />
+            </div>
+            <div class="control-group" style="display:flex; align-items:flex-end;">
+              <button class="btn btn-primary" id="btn-calc-breakeven" style="width:100%; justify-content:center;">Recalcular Matriz</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>SKU</th>
+                  <th>Família / Forma</th>
+                  <th>Dose/ha</th>
+                  <th>Preço Unit.</th>
+                  <th>Frete/ha</th>
+                  <th>Custo Entregue/ha</th>
+                  <th>Break-Even (kg/ha)</th>
+                  <th>Break-Even (sc/ha)</th>
+                  <th>ROI Projetado</th>
+                  <th>Semáforo</th>
+                  <th>Regra de Decisão Comercial</th>
+                </tr>
+              </thead>
+              <tbody id="breakeven-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="section-card">
+            <div class="section-header">
+              <div>
+                <h2 class="section-title">Custo do Problema (O Que Abre a Reunião — Bloco 5)</h2>
+                <p class="section-desc">No Brasil, não venda "yield incremental": venda a redução do prejuízo que o produtor já está pagando todo ano.</p>
+              </div>
+            </div>
+            <div id="soil-problems-container"></div>
+          </div>
+
+          <div class="section-card">
+            <div class="section-header">
+              <div>
+                <h2 class="section-title">Modelo de Substituição de 20% do MAP (Bloco 4)</h2>
+                <p class="section-desc">Granulado em grãos não fecha por rendimento isolado — fecha como substituto parcial de adubo fosfatado (ROI ≥ 1,25x).</p>
+              </div>
+            </div>
+            <div id="map-substitution-box"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: SIMULADOR LANDED-TO-CHANNEL & 11% CINZA -->
+      <section class="tab-panel" id="panel-landed">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Simulador Tributário, Landed Cost &amp; Margem por Canal (Agente 03)</h2>
+              <p class="section-desc">Simule a estrutura de importação (Canadá → Brasil), rebates de canal, comissão de parceiro técnico e a economia real por kg de Substância Húmica ativa (11% de cinza vs 60%).</p>
+            </div>
+          </div>
+
+          <div class="controls-row">
+            <div class="control-group">
+              <label for="sim-sku">SKU</label>
+              <select id="sim-sku">
+                <option value="Fuze DS">Fuze DS (Pó 60% ISO Solúvel)</option>
+                <option value="Alpha">Alpha (Líquido Baixa Dose)</option>
+                <option value="Magna">Magna (Granular 60% Solúvel)</option>
+                <option value="XP100">XP100 (Pó Industrial &lt;200 mesh)</option>
+                <option value="Keal">Keal (Fúlvico Premium Café/HF)</option>
+                <option value="Liquid Carbon HC">Liquid Carbon HC (24% Concentrado)</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label for="sim-route">Rota Comercial</label>
+              <select id="sim-route">
+                <option value="OEM / Indústria Importadora">OEM / Indústria Importadora</option>
+                <option value="Cooperativa (Venda Direta c/ Técnico)">Cooperativa (Venda Direta c/ Técnico)</option>
+                <option value="Importador + Distribuidor Regional">Importador + Distribuidor Regional</option>
+                <option value="Conta Âncora (Volume > 20t / Barter)">Conta Âncora (Volume &gt; 20t / Barter)</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label for="sim-fob">Custo Base FOB (US$/unid)</label>
+              <input type="number" step="0.10" id="sim-fob" value="7.20" />
+            </div>
+            <div class="control-group">
+              <label for="sim-fx">Câmbio (R$/US$)</label>
+              <input type="number" step="0.05" id="sim-fx" value="5.45" />
+            </div>
+            <div class="control-group">
+              <label for="sim-tax">Tributos Não-Recup. Hipótese (%)</label>
+              <input type="number" step="0.5" id="sim-tax" value="18.5" />
+            </div>
+            <div class="control-group">
+              <label for="sim-comm">Comissão Parceiro Técnico (%)</label>
+              <input type="number" step="0.5" id="sim-comm" value="5.0" />
+            </div>
+            <div class="control-group">
+              <label for="sim-margin">Margem/Rebate do Canal (%)</label>
+              <input type="number" step="1.0" id="sim-margin" value="22.0" />
+            </div>
+            <div class="control-group">
+              <label for="sim-vol">Volume do Lote (Toneladas)</label>
+              <input type="number" step="5" id="sim-vol" value="20" />
+            </div>
+          </div>
+          <div style="margin-bottom: 18px;">
+            <button class="btn btn-primary" id="btn-calc-landed">Simular Estrutura Landed-to-Channel</button>
+          </div>
+
+          <div id="landed-results-container"></div>
+        </div>
+      </section>
+
+      <!-- TAB 5: CONCORRÊNCIA, MERCADO & FEIRAS 2027 -->
+      <section class="tab-panel" id="panel-competitors">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Matriz de Inteligência Competitiva no Brasil (Sheet 3 — Análise de Mercado)</h2>
+              <p class="section-desc">Comparativo de origem, dose/ha, preço público e argumento técnico de defesa para cada concorrente mapeado.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Concorrente / Produto</th>
+                  <th>Origem / Tecnologia</th>
+                  <th>Formulação &amp; Dose Pública</th>
+                  <th>Preço Público Encontrado</th>
+                  <th>Contra-Ataque Black Earth</th>
+                  <th>Argumento de Defesa Técnica &amp; Comercial</th>
+                </tr>
+              </thead>
+              <tbody id="competitors-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Calendário Estratégico de Feiras &amp; Eventos 2027 (Alerta de 60 Dias)</h2>
+              <p class="section-desc">Em novembro de 2026, a contratação de áreas demonstrativas e submissão de trabalhos para o 1º semestre de 2027 fecha nos próximos 60 dias.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Evento</th>
+                  <th>Local &amp; Data</th>
+                  <th>Prioridade</th>
+                  <th>Alerta de Prazo (Nov/Dez 2026)</th>
+                  <th>Objetivo Estratégico &amp; Contas Alvo</th>
+                  <th>SKUs Foco</th>
+                </tr>
+              </thead>
+              <tbody id="events-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: MARKETING B2B & PLAYBOOKS -->
+      <section class="tab-panel" id="panel-marketing">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Playbooks de Abordagem B2B, Cadência de 5 Semanas &amp; Aprovação Humana (Agente 06)</h2>
+              <p class="section-desc">Governança obrigatória: nenhum material sai sem respeitar os Gates Regulatórios (R0–R4) e aprovação humana de Jardélcio Carvalho (AgroRemoto).</p>
+            </div>
+          </div>
+          <div id="playbooks-container"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="app-toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
